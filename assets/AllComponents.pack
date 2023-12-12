@@ -1,0 +1,258 @@
+
+AllComponents.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+ButtonExitDown
+  rotate: false
+  xy: 706, 1302
+  size: 350, 140
+  orig: 350, 140
+  offset: 0, 0
+  index: -1
+ButtonExitUp
+  rotate: false
+  xy: 354, 950
+  size: 350, 140
+  orig: 350, 140
+  offset: 0, 0
+  index: -1
+ButtonJumpDown
+  rotate: false
+  xy: 1924, 1920
+  size: 47, 64
+  orig: 47, 64
+  offset: 0, 0
+  index: -1
+ButtonJumpUp
+  rotate: false
+  xy: 287, 38
+  size: 47, 64
+  orig: 47, 64
+  offset: 0, 0
+  index: -1
+ButtonMainMenuDown
+  rotate: false
+  xy: 706, 1030
+  size: 350, 117
+  orig: 350, 117
+  offset: 0, 0
+  index: -1
+ButtonMainMenuUp
+  rotate: false
+  xy: 1058, 1202
+  size: 350, 117
+  orig: 350, 117
+  offset: 0, 0
+  index: -1
+ButtonPauseDown
+  rotate: false
+  xy: 354, 290
+  size: 158, 140
+  orig: 158, 140
+  offset: 0, 0
+  index: -1
+ButtonPauseUp
+  rotate: false
+  xy: 706, 774
+  size: 159, 140
+  orig: 159, 140
+  offset: 0, 0
+  index: -1
+ButtonPlayDown
+  rotate: false
+  xy: 2, 246
+  size: 350, 140
+  orig: 350, 140
+  offset: 0, 0
+  index: -1
+ButtonPlayUp
+  rotate: false
+  xy: 354, 778
+  size: 350, 140
+  orig: 350, 140
+  offset: 0, 0
+  index: -1
+ButtonRestartDown
+  rotate: false
+  xy: 706, 1172
+  size: 350, 117
+  orig: 350, 117
+  offset: 0, 0
+  index: -1
+ButtonRestartUp
+  rotate: false
+  xy: 354, 648
+  size: 350, 117
+  orig: 350, 117
+  offset: 0, 0
+  index: -1
+ButtonResumeDown
+  rotate: false
+  xy: 1058, 1344
+  size: 350, 117
+  orig: 350, 117
+  offset: 0, 0
+  index: -1
+ButtonResumeUp
+  rotate: false
+  xy: 2, 116
+  size: 350, 117
+  orig: 350, 117
+  offset: 0, 0
+  index: -1
+GameOverThanks
+  rotate: false
+  xy: 2, 1781
+  size: 1920, 203
+  orig: 1920, 203
+  offset: 0, 0
+  index: -1
+InfoButtonDown
+  rotate: false
+  xy: 1618, 1253
+  size: 150, 117
+  orig: 150, 117
+  offset: 0, 0
+  index: -1
+InfoButtonUp
+  rotate: false
+  xy: 354, 171
+  size: 150, 117
+  orig: 150, 117
+  offset: 0, 0
+  index: -1
+Level1ButtonDown
+  rotate: false
+  xy: 2, 418
+  size: 350, 350
+  orig: 350, 350
+  offset: 0, 0
+  index: -1
+Level1ButtonUp
+  rotate: false
+  xy: 2, 1122
+  size: 350, 350
+  orig: 350, 350
+  offset: 0, 0
+  index: -1
+Level2ButtonDown
+  rotate: false
+  xy: 354, 1122
+  size: 350, 350
+  orig: 350, 350
+  offset: 0, 0
+  index: -1
+Level2ButtonUp
+  rotate: false
+  xy: 2, 770
+  size: 350, 350
+  orig: 350, 350
+  offset: 0, 0
+  index: -1
+NoButtonDown
+  rotate: false
+  xy: 1695, 1372
+  size: 206, 100
+  orig: 206, 100
+  offset: 0, 0
+  index: -1
+NoButtonDownWhite
+  rotate: false
+  xy: 354, 432
+  size: 206, 100
+  orig: 206, 100
+  offset: 0, 0
+  index: -1
+NoButtonUp
+  rotate: false
+  xy: 1410, 1270
+  size: 206, 100
+  orig: 206, 100
+  offset: 0, 0
+  index: -1
+NoButtonUpWhite
+  rotate: false
+  xy: 1058, 1088
+  size: 206, 100
+  orig: 206, 100
+  offset: 0, 0
+  index: -1
+SoundButtonDown
+  rotate: false
+  xy: 1266, 1071
+  size: 150, 117
+  orig: 150, 117
+  offset: 0, 0
+  index: -1
+SoundButtonUp
+  rotate: false
+  xy: 867, 797
+  size: 150, 117
+  orig: 150, 117
+  offset: 0, 0
+  index: -1
+SoundisOffDown
+  rotate: false
+  xy: 706, 655
+  size: 150, 117
+  orig: 150, 117
+  offset: 0, 0
+  index: -1
+SoundisOffUp
+  rotate: false
+  xy: 1770, 1253
+  size: 150, 117
+  orig: 150, 117
+  offset: 0, 0
+  index: -1
+YesButtonDown
+  rotate: false
+  xy: 354, 534
+  size: 283, 100
+  orig: 283, 100
+  offset: 0, 0
+  index: -1
+YesButtonDownWhite
+  rotate: false
+  xy: 2, 2
+  size: 283, 100
+  orig: 283, 100
+  offset: 0, 0
+  index: -1
+YesButtonUp
+  rotate: false
+  xy: 706, 916
+  size: 283, 100
+  orig: 283, 100
+  offset: 0, 0
+  index: -1
+YesButtonUpWhite
+  rotate: false
+  xy: 1410, 1372
+  size: 283, 100
+  orig: 283, 100
+  offset: 0, 0
+  index: -1
+continue
+  rotate: false
+  xy: 2, 1576
+  size: 1900, 100
+  orig: 1900, 100
+  offset: 0, 0
+  index: -1
+continueWhite
+  rotate: false
+  xy: 2, 1474
+  size: 1900, 100
+  orig: 1900, 100
+  offset: 0, 0
+  index: -1
+thforpl
+  rotate: false
+  xy: 2, 1678
+  size: 1920, 101
+  orig: 1920, 101
+  offset: 0, 0
+  index: -1
