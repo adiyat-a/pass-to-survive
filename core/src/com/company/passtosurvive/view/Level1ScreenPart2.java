@@ -54,7 +54,7 @@ public class Level1ScreenPart2 extends PlayGameScreen{ // уровень 1 ча�
         }
         mapPort=new FitViewport(Main.worldWidth/Main.PPM, Main.worldHeight/Main.PPM, cam);
         mapLoader=new TmxMapLoader();
-        map=mapLoader.load("map4.tmx");
+        map=mapLoader.load("map2.tmx");
         renderer=new OrthogonalTiledMapRenderer(map, 1/Main.PPM); // почти все величины связаные с картой я делю на PPM чтобы не было проблем с физикой
         cam.position.set(mapPort.getWorldWidth()/2, mapPort.getWorldHeight()/2, 0);
         Main.v.set(0,-11); // я не создал new vector2 т.к. из-за этого будет лишнее выделение в памяти
