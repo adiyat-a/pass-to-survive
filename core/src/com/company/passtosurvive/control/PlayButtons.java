@@ -35,7 +35,7 @@ public class PlayButtons implements Disposable { // имеет все кнопк
         stage.addActor(pause);
         stage.addActor(jump);
         stage.addActor(joyStick);
-        Gdx.input.setInputProcessor(stage); // чтобы нажатия обрабатывал токо stage
+        Gdx.input.setInputProcessor(stage); // so that clicks are processed only by stage
     }
     public void update(int width, int height){
         port.update(width, height);

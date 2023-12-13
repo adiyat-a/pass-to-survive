@@ -14,9 +14,9 @@ import com.company.passtosurvive.control.PlayButtons;
 import com.company.passtosurvive.models.Human;
 import com.company.passtosurvive.tools.MusicalAtmosphere;
 
-public abstract class PlayGameScreen implements Screen { // Наследники этого класса только левел скрины
-    public Human human; // создаю Human здесь для WorldContactListener
-    public abstract void handle(); // метод для контроля над моделькой игрока
-    public abstract void update(float dt); // нужен для обновления текстурки спрайта Human, камеры и т.д.
-    public abstract void collision(); // нужен для запуска скрипта в случае столкновения с определенным объект в игре
+public abstract class PlayGameScreen implements Screen { // Heirs of this class are only level screens
+    public Human human; // create Human here for WorldContactListener
+    public abstract void handle(); // method for controlling the player model
+    public abstract void update(float dt); // needed to update the textures of the Human sprite, camera, etc.
+    public abstract void collision(); // needed to run the script in case of a collision with a certain object in the game
 }

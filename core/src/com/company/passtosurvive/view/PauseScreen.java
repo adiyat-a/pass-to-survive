@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
-public class PauseScreen implements Screen { // меню паузы запускается при нажатии кнопки паузы в игре
+public class PauseScreen implements Screen { // the pause menu is launched when the pause button is pressed in the game
     final Main game;
     private TextureAtlas atlas;
     private Skin skin;
@@ -84,14 +84,14 @@ public class PauseScreen implements Screen { // меню паузы запуск
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1); // отчистка
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // отчистка
+        Gdx.gl.glClearColor(0, 0, 0, 1); // cleanup
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // cleanup
         stage.act(delta);
         stage.draw();
     }
 
     @Override
-    public void resize(int width, int height) { // в презентации объяснил почему я делю 1794 на Main.width
+    public void resize(int width, int height) { // in the presentation I explained why I divide 1794 by Main.width
         resume.setSize(700/(1794/Main.width), 234f/(1794/Main.width));
         restart.setSize(700/(1794/Main.width), 234f/(1794/Main.width));
         mainMenu.setSize(700/(1794/Main.width), 234f/(1794/Main.width));

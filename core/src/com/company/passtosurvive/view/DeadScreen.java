@@ -17,7 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.company.passtosurvive.tools.MusicalAtmosphere;
 
-public class DeadScreen implements Screen { // GameOver экран запускается когда игрок падает в лаву или умирает от шипов
+public class DeadScreen implements Screen { // GameOver screen starts when the player falls into lava or dies from spikes
     final Main game;
     private MusicalAtmosphere music;
     private Texture gameOver, label;
@@ -26,8 +26,8 @@ public class DeadScreen implements Screen { // GameOver экран запуск�
     private Stage stage;
     private Skin skin;
     private ImageButton Yes, No;
-    private float stateTime, stateTimer; // stateTimer нужен для подсчета времени
-    private boolean played; // нужно для запуска звука в определенный момент
+    private float stateTime, stateTimer; // stateTimer is needed to count time
+    private boolean played; // needed to start sound at a certain moment
     public DeadScreen(final Main game) {
         this.game = game;
         Main.HumanX=0;
@@ -114,8 +114,8 @@ public class DeadScreen implements Screen { // GameOver экран запуск�
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1); // отчистка
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // отчистка
+        Gdx.gl.glClearColor(0, 0, 0, 1); // cleanup
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // cleanup
         batch.begin();
         stateTimer+=delta;
         if(Main.hit==1 && Main.deaths!=20 || Main.hit==2 && Main.deaths!=20) {

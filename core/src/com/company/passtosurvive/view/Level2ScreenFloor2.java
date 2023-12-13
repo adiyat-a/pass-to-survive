@@ -20,12 +20,12 @@ import com.company.passtosurvive.models.Human;
 import com.company.passtosurvive.tools.MusicalAtmosphere;
 import com.company.passtosurvive.tools.WorldContactListener;
 import com.company.passtosurvive.tools.b2WorldCreator;
-public class Level2ScreenFloor2 extends PlayGameScreen { // уровень 2 часть 2 запускается когда игрок сталкивается с определенным объектом в 1 части
+public class Level2ScreenFloor2 extends PlayGameScreen { // level 2 part 2 is triggered when the player collides with a certain object in part 1
     final Main game;
     private MusicalAtmosphere music;
     private PlayButtons buttons;
     private SpriteBatch batch;
-    private Texture background; // нужен чтобы человека не было видно когда тот идет к финишу
+    private Texture background; // needed so that the person is not visible when he goes to the finish line
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
     private World world;
@@ -54,7 +54,7 @@ public class Level2ScreenFloor2 extends PlayGameScreen { // уровень 2 ч�
         map = mapLoader.load("map4.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1 / Main.PPM); // почти все величины связаные с картой я делю на PPM чтобы не было проблем с физикой
         cam.position.set(mapPort.getWorldWidth() / 2, mapPort.getWorldHeight() / 2, 0);
-        Main.v.set(0, -21); // я не создал new vector2 т.к. из-за этого будет лишнее выделение в памяти
+        Main.v.set(0, -21); // I didn't create new vector2 because This will result in unnecessary memory allocation
         world = new World(Main.v, true);
         if(Main.HumanX!=0 && Main.HumanY!=0){
             human = new Human(world,Main.HumanX + 0.225f, Main.HumanY + 0.3f); // увеличиваю из-за того что игрок спавнится не ровно по центру
@@ -123,8 +123,8 @@ public class Level2ScreenFloor2 extends PlayGameScreen { // уровень 2 ч�
     @Override
     public void render(float delta) {
         update(delta);
-        Gdx.gl.glClearColor(0, 0, 0, 1); // отчистка
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // отчистка
+        Gdx.gl.glClearColor(0, 0, 0, 1); // cleanup
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // cleanup
         renderer.render();
         b2dr.render(world, cam.combined); // вот это можете отключить если не хотите видеть зеленую обводку вокруг объектов world
         batch.setProjectionMatrix(cam.combined);

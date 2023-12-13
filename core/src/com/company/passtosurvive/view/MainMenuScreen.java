@@ -16,7 +16,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.company.passtosurvive.tools.MusicalAtmosphere;
 
-public class MainMenuScreen implements Screen { // главное меню запускается в начале игры через меню паузы можно вернутся сюда
+public class MainMenuScreen implements Screen { // the main menu starts at the beginning of the game through the pause menu you can return here
     final Main game;
     private MusicalAtmosphere music;
     private SpriteBatch batch;
@@ -39,7 +39,7 @@ public class MainMenuScreen implements Screen { // главное меню за�
         atlas=new TextureAtlas("Logo.pack");
         information=new Texture("DevInfo.png");
         for(int i=1; i<=175; i+=3){
-            logoFrames.add(atlas.findRegion("Logo"+i)); // я делаю тут увеличение i на 3 т.к. в атласе слишком много текстурок (177)
+            logoFrames.add(atlas.findRegion("Logo"+i)); // I increase i here by 3 because there are too many textures in the atlas (177)
         }
         logoFrames.add(atlas.findRegion("Logo177"));
         Main.animation=new Animation(0.05f, logoFrames);
@@ -49,7 +49,7 @@ public class MainMenuScreen implements Screen { // главное меню за�
         atlas=new TextureAtlas("AllComponents.pack");
         skin=new Skin(Gdx.files.internal("Buttons.json"), atlas);
         play=new ImageButton(skin, "default");
-        play.addListener(new ClickListener() { //создаем ей листенера который будет считывать нажатия
+        play.addListener(new ClickListener() { // create a listener for it that will read keystrokes
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 level1.setVisible(true);
@@ -58,7 +58,7 @@ public class MainMenuScreen implements Screen { // главное меню за�
             }
         });
         exit =new ImageButton(skin, "default1");
-        exit.addListener(new ClickListener(){ //создаем ей листенера который будет считывать нажатия
+        exit.addListener(new ClickListener(){ // create a listener for it that will read keystrokes
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
@@ -67,7 +67,7 @@ public class MainMenuScreen implements Screen { // главное меню за�
         });
         sound=new ImageButton(skin, "default9");
         soundIsOff=new ImageButton(skin, "default13");
-        soundIsOff.addListener(new ClickListener(){ //создаем ей листенера который будет считывать нажатия
+        soundIsOff.addListener(new ClickListener(){ // create a listener for it that will read keystrokes
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(sound.isVisible() || Main.infoIsPressed) {
@@ -76,7 +76,7 @@ public class MainMenuScreen implements Screen { // главное меню за�
                 }
             }
         });
-        sound.addListener(new ClickListener(){ //создаем ей листенера который будет считывать нажатия
+        sound.addListener(new ClickListener(){ // create a listener for it that will read keystrokes
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(music.MainMenuSoundIsPlaying()){
@@ -90,7 +90,7 @@ public class MainMenuScreen implements Screen { // главное меню за�
             }
         });
         info=new ImageButton(skin, "default10");
-        info.addListener(new ClickListener(){ //создаем ей листенера который будет считывать нажатия
+        info.addListener(new ClickListener(){ // create a listener for it that will read keystrokes
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(Main.infoIsPressed){
@@ -102,7 +102,7 @@ public class MainMenuScreen implements Screen { // главное меню за�
             }
         });
         level1=new ImageButton(skin, "default11");
-        level1.addListener(new ClickListener(){ //создаем ей листенера который будет считывать нажатия
+        level1.addListener(new ClickListener(){ //create a listener for it that will read keystrokes
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 music.MainMenuSoundStop();
@@ -128,7 +128,7 @@ public class MainMenuScreen implements Screen { // главное меню за�
         stage.addActor(soundIsOff);
         stage.addActor(level1);
         stage.addActor(level2);
-        Gdx.input.setInputProcessor(stage); // чтобы нажатия обрабатывал токо stage
+        Gdx.input.setInputProcessor(stage); // so that clicks are processed only by stage
         if(Main.soundIsOn) {
             music.MainMenuSoundPLay();
         }
@@ -149,8 +149,8 @@ public class MainMenuScreen implements Screen { // главное меню за�
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1); // отчистка
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); //отчистка
+        Gdx.gl.glClearColor(0, 0, 0, 1); // cleanup
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // cleanup
         batch.begin();
         batch.draw(background, 0, 0, Main.width, Main.height);
         if(Main.infoIsPressed==false) {

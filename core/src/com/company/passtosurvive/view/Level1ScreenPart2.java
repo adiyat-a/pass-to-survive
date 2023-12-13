@@ -24,7 +24,7 @@ import com.company.passtosurvive.tools.b2WorldCreator;
 
 import java.util.NavigableMap;
 
-public class Level1ScreenPart2 extends PlayGameScreen{ // уровень 1 часть 2 запускается когда игрок сталкивается с определенным объектом в 1 части
+public class Level1ScreenPart2 extends PlayGameScreen{ // level 1 part 2 is triggered when the player collides with a certain object in part 1
     final Main game;
     private MusicalAtmosphere music;
     private PlayButtons buttons;
@@ -36,7 +36,7 @@ public class Level1ScreenPart2 extends PlayGameScreen{ // уровень 1 ча�
     private TmxMapLoader mapLoader;
     private OrthographicCamera cam;
     private Viewport mapPort;
-    public boolean animationIsFinished=false; // нужен для анимации в начале после перехода на эту часть карты
+    public boolean animationIsFinished=false; // needed for animation at the beginning after moving to this part of the map
     public Level1ScreenPart2(final Main game) {
         this.game=game;
         batch=new SpriteBatch();
@@ -55,18 +55,18 @@ public class Level1ScreenPart2 extends PlayGameScreen{ // уровень 1 ча�
         mapPort=new FitViewport(Main.worldWidth/Main.PPM, Main.worldHeight/Main.PPM, cam);
         mapLoader=new TmxMapLoader();
         map=mapLoader.load("map2.tmx");
-        renderer=new OrthogonalTiledMapRenderer(map, 1/Main.PPM); // почти все величины связаные с картой я делю на PPM чтобы не было проблем с физикой
+        renderer=new OrthogonalTiledMapRenderer(map, 1/Main.PPM); // I divide almost all values associated with the map by PPM so that there are no problems with physics
         cam.position.set(mapPort.getWorldWidth()/2, mapPort.getWorldHeight()/2, 0);
-        Main.v.set(0,-11); // я не создал new vector2 т.к. из-за этого будет лишнее выделение в памяти
+        Main.v.set(0,-11); // I didn't create new vector2 because This will result in unnecessary memory allocation
         world=new World(Main.v, true);
         if(Main.HumanX!=0 && Main.HumanY!=0){
-            human = new Human(world,Main.HumanX + 0.225f, Main.HumanY + 0.3f); // увеличиваю из-за того что игрок спавнится не ровно по центру
+            human = new Human(world,Main.HumanX + 0.225f, Main.HumanY + 0.3f); // increase due to the fact that the player does not spawn exactly in the center
         }
         else if (Main.HumanX == 0 && Main.HumanY == 0 && Main.HumanYCheckpoint == 0 && Main.HumanXCheckpoint == 0) {
-            human=new Human(world,0/Main.PPM, Human2Y+0.3f); // сохраняем высоту прошлого человека чтобы было реалистичнее
+            human=new Human(world,0/Main.PPM, Human2Y+0.3f); // save the height of the previous person to make it more realistic
         }
         else if(Main.HumanX==0 && Main.HumanY==0){
-            human = new Human(world, Main.HumanXCheckpoint, Main.HumanYCheckpoint+0.3f); // увеличиваю Y на 0.3f чтобы игрок спавнился чуть выше чем сам чекпоинт
+            human = new Human(world, Main.HumanXCheckpoint, Main.HumanYCheckpoint+0.3f); // increase Y by 0.3f so that the player spawns slightly higher than the checkpoint itself
         }
         b2dr=new Box2DDebugRenderer();
         new b2WorldCreator(world, map, this);
@@ -140,8 +140,8 @@ public class Level1ScreenPart2 extends PlayGameScreen{ // уровень 1 ча�
     @Override
     public void render(float delta) {
         update(delta);
-        Gdx.gl.glClearColor(0, 0, 0, 1); // отчистка
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // отчистка
+        Gdx.gl.glClearColor(0, 0, 0, 1); // cleanup
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // cleanup
         renderer.render();
         b2dr.render(world, cam.combined); // вот это можете отключить если не хотите видеть зеленую обводку вокруг объектов world
         batch.setProjectionMatrix(cam.combined);
