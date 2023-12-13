@@ -94,16 +94,16 @@ public class DeadScreen implements Screen { // GameOver screen starts when the p
             music.GameOverSoundPLay();
         }
     }
-    public void deadRender(){ // объяснил в презентации, почему я так сделал
+    public void deadRender(){ // I explained this in slides (.pptx file)
         stateTime+=Gdx.graphics.getDeltaTime();
         batch.draw( (TextureRegion) Main.animation.getKeyFrame(stateTime, true), 0, Main.height/2, Main.width, Main.height/3f);
     }
-    public void deadSpikesRender(){ // объяснил в презентации, почему я так сделал
+    public void deadSpikesRender(){ // I explained this in slides (.pptx file)
         stateTime += Gdx.graphics.getDeltaTime();
         batch.draw((TextureRegion) Main.animation.getKeyFrame(stateTime, false), Main.width / 2-(168/(1794/Main.width)),
                 Main.height/2-80/(1080/Main.height)+Main.height/5.1f, 336/(1794/Main.width), 336/(1794/Main.width));
     }
-    public void ghoulRender(){ // объяснил в презентации, почему я так сделал
+    public void ghoulRender(){ // I explained this in slides (.pptx file)
         stateTime += Gdx.graphics.getDeltaTime();
         batch.draw((TextureRegion) Main.animation.getKeyFrame(stateTime, false), -640/(720/Main.height)+(Main.width/2), 0,
                 1280/(720/Main.height),
@@ -183,7 +183,7 @@ public class DeadScreen implements Screen { // GameOver screen starts when the p
     }
 
     @Override
-    public void resize(int width, int height) { // объяснил в презентации, почему я так сделал
+    public void resize(int width, int height) { // I explained this in slides (.pptx file)
         if(Main.hit==1 && Main.deaths!=20 || Main.hit==2 && Main.deaths!=20) {
             Yes.setSize(141.5f / (1794 / Main.width), 50 / (1794 / Main.width));
             No.setSize(141.5f / (1794 / Main.width), 50 / (1794 / Main.width));

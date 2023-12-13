@@ -40,7 +40,7 @@ public class Level2ScreenFloor1 extends PlayGameScreen{ // level 2 part 1 starts
         music=new MusicalAtmosphere();
         buttons=new PlayButtons();
         cam=new OrthographicCamera();
-        if(Main.width==1794 && Main.height==1080){ // объяснил в презентации, почему я так сделал
+        if(Main.width==1794 && Main.height==1080){ // I explained this in slides (.pptx file)
             Main.worldHeight=672f;
             Main.worldWidth=1056;
         }

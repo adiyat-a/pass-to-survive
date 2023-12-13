@@ -136,7 +136,7 @@ public class MainMenuScreen implements Screen { // the main menu starts at the b
             music.MainMenuSoundStop();
         }
     }
-    public void animeRender(){ // в перезентации я объяснил почему я делю 1920 / на размер экрана устройства на котором запускаю
+    public void animeRender(){ // in the presentation I explained why I divide 1920 / by the screen size of the device on which I run
         stateTime+=Gdx.graphics.getDeltaTime();
         batch.draw((TextureRegion) Main.animation.getKeyFrame(stateTime, true),
                 Main.width/2-(936/(1920/Main.width))/2,
@@ -194,7 +194,7 @@ public class MainMenuScreen implements Screen { // the main menu starts at the b
             }
     }
     @Override
-    public void resize(int width, int height) { // в презентации я объяснил почему я по своему оптимизирую размеры кнопок под экран
+    public void resize(int width, int height) { // in the presentation I explained why I optimize the sizes of buttons for the screen in my own way
         Main.width=width;
         Main.height=height;
         sound.setSize(150/(1794/Main.width),

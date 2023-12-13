@@ -44,7 +44,7 @@ public class Level1ScreenPart2 extends PlayGameScreen{ // level 1 part 2 is trig
         Main.screen=2;
         buttons=new PlayButtons();
         cam=new OrthographicCamera();
-        if(Main.width==1794 && Main.height==1080){ // объяснил в презентации, почему я так сделал
+        if(Main.width==1794 && Main.height==1080){ // I explained this in slides (.pptx file)
             Main.worldHeight=543f;
             Main.worldWidth=864;
         }
@@ -98,7 +98,7 @@ public class Level1ScreenPart2 extends PlayGameScreen{ // level 1 part 2 is trig
             music.JumpSoundPLay();
         }
         if(buttons.joyStick.isJoyStickDown()){
-            if(buttons.joyStick.getValueX()>0 && human.HumanBody.getLinearVelocity().x<=2.5f){ // 2.5f это макс. скорость 0.3f как разгон (ускорение)
+            if(buttons.joyStick.getValueX()>0 && human.HumanBody.getLinearVelocity().x<=2.5f){ // 2.5f is the max. speed 0.3f as acceleration
                 Main.v.set(0.3f, 0);
                 human.HumanBody.applyLinearImpulse(Main.v, human.HumanBody.getWorldCenter(), true);
             }
@@ -107,11 +107,11 @@ public class Level1ScreenPart2 extends PlayGameScreen{ // level 1 part 2 is trig
                 human.HumanBody.applyLinearImpulse(Main.v, human.HumanBody.getWorldCenter(), true);
             }
         }
-        if(!buttons.joyStick.isJoyStickDown() && human.HumanBody.getLinearVelocity().x!=0){ // нужно чтобы игрок сразу остановился после отпускания джойстика
+        if(!buttons.joyStick.isJoyStickDown() && human.HumanBody.getLinearVelocity().x!=0){ // the player needs to stop immediately after releasing the joystick
             Main.v.set(-human.HumanBody.getLinearVelocity().x, 0);
             human.HumanBody.applyLinearImpulse(Main.v, human.HumanBody.getWorldCenter(), true);
         }
-        if(human.getX()<280/Main.PPM && !animationIsFinished){ // данный скрипт не заработает после смерти т.к. на позиции 280 стоит чекпоинт чтобы не повторять
+        if(human.getX()<280/Main.PPM && !animationIsFinished){ // This script will not work after death because There is a checkpoint at position 280 so as not to repeat
             buttons.joyStick.setVisible(false);
             buttons.jump.setVisible(false);
             if(human.HumanBody.getLinearVelocity().y==0){
@@ -132,8 +132,8 @@ public class Level1ScreenPart2 extends PlayGameScreen{ // level 1 part 2 is trig
     public void update(float dt){
         handle();
         world.step(1/60f, 6,2);
-        cam.position.x=human.HumanBody.getPosition().x; // камера движется за игроком
-        human.update(dt); // обновляем спрайт
+        cam.position.x=human.HumanBody.getPosition().x; // camera moves with player
+        human.update(dt);
         cam.update();
         renderer.setView(cam);
     }
@@ -143,7 +143,7 @@ public class Level1ScreenPart2 extends PlayGameScreen{ // level 1 part 2 is trig
         Gdx.gl.glClearColor(0, 0, 0, 1); // cleanup
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // cleanup
         renderer.render();
-        b2dr.render(world, cam.combined); // вот это можете отключить если не хотите видеть зеленую обводку вокруг объектов world
+        b2dr.render(world, cam.combined); // you can disable this if you don’t want to see a green outline around world objects
         batch.setProjectionMatrix(cam.combined);
         collision();
         batch.begin();
@@ -155,13 +155,13 @@ public class Level1ScreenPart2 extends PlayGameScreen{ // level 1 part 2 is trig
 
     @Override
     public void collision() {
-        if(human.Dead() && Main.hit==1 || human.Dead() && Main.hit==2){ // 1 означает лаву, 2 означает шипы
+        if(human.Dead() && Main.hit==1 || human.Dead() && Main.hit==2){ // 1 means lava, 2 means spikes
             Main.deaths++;
             music.Level1SoundStop();
             dispose();
             game.setScreen(new DeadScreen(game));
         }
-        if(human.Dead() && Main.hit==3){ // 3 означает финиш
+        if(human.Dead() && Main.hit==3){ // 3 means finish
             Main.level1IsFinished=true;
             music.Level1SoundStop();
             dispose();

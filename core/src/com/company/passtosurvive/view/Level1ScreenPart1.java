@@ -38,7 +38,7 @@ public class Level1ScreenPart1 extends PlayGameScreen { // level 1 part 1 starts
         Main.screen=1;
         buttons=new PlayButtons();
         cam=new OrthographicCamera();
-        if(Main.width==1794 && Main.height==1080){ // объяснил в презентации, почему я так сделал
+        if(Main.width==1794 && Main.height==1080){ // I explained this in slides (.pptx file)
             Main.worldHeight=543f;
             Main.worldWidth=864;
         }

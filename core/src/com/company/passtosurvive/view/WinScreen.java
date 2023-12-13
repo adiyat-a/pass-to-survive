@@ -124,7 +124,7 @@ public class WinScreen implements Screen { // the victory screen is launched aft
         }
     }
     @Override
-    public void resize(int width, int height) { // объяснил в презентации, почему я так сделал
+    public void resize(int width, int height) { // I explained this in slides (.pptx file)
         if (Main.level1IsFinished && !Main.level2IsFinished || Main.level2IsFinished && !Main.level1IsFinished) {
             Yes.setSize(141.5f / (1794 / Main.width), 50 / (1794 / Main.width));
             No.setSize(141.5f / (1794 / Main.width), 50 / (1794 / Main.width));

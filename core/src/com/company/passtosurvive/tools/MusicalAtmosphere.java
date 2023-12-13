@@ -5,9 +5,9 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.utils.Disposable;
 
-public class MusicalAtmosphere extends AssetManager { // отвечает за музыку и звуки
+public class MusicalAtmosphere extends AssetManager { // used for music and sounds
 
-    public MusicalAtmosphere() { // загрузка всего
+    public MusicalAtmosphere() { // loading everything
         load("Level1Sound.ogg", Music.class);
         load("Level2Sound.ogg", Music.class);
         load("MainMenuSound.ogg", Music.class);

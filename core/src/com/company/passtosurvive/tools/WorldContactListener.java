@@ -9,20 +9,20 @@ import com.company.passtosurvive.models.TileObject;
 import com.company.passtosurvive.view.Main;
 import com.company.passtosurvive.view.PlayGameScreen;
 
-public class WorldContactListener implements ContactListener { // Служит Слушателем столкновений двух объектов в игре
-    private PlayGameScreen screen; // я создал Human в PlayGameScreen чтобы для всех левел экранов был один листенер
+public class WorldContactListener implements ContactListener { // Serves as a Collision Listener for two objects in the game
+    private PlayGameScreen screen; // I created Human in PlayGameScreen so that there would be one listener for all level screens
     public WorldContactListener(PlayGameScreen screen) {
         this.screen = screen;
     }
     @Override
-    public void beginContact(Contact contact) { // начало столкновения
-        Fixture fixA=contact.getFixtureA(); // первый объект
-        Fixture fixB=contact.getFixtureB(); // второй объект
-        if(fixA.getUserData()=="Human" || fixB.getUserData()=="Human"){ // проверка столкновения одного объекта с игроком
-            Fixture Human=fixA.getUserData()=="Human"? fixA:fixB; // какой из них игрок
-            Fixture object= Human==fixA? fixB:fixA; // какой из них не игрок
-            if(object.getUserData()!=null && TileObject.class.isAssignableFrom(object.getUserData().getClass())) { // не равен ли объект ничему и наследуется ли он от TileObject
-                ((TileObject) object.getUserData()).hit(); // задаем Main.hit значение
+    public void beginContact(Contact contact) { // the start of collision
+        Fixture fixA=contact.getFixtureA(); // first object
+        Fixture fixB=contact.getFixtureB(); // second object
+        if(fixA.getUserData()=="Human" || fixB.getUserData()=="Human"){ // check if one of the objects is player
+            Fixture Human=fixA.getUserData()=="Human"? fixA:fixB; // which one is player
+            Fixture object= Human==fixA? fixB:fixA; // which one is not player
+            if(object.getUserData()!=null && TileObject.class.isAssignableFrom(object.getUserData().getClass())) { // is the object equal to nothing and does it inherit from TileObject
+                ((TileObject) object.getUserData()).hit(); // set Main.hit value
                 if(Main.hit==6){
                     Main.PreviousBouncers=true;
                 }
@@ -36,10 +36,10 @@ public class WorldContactListener implements ContactListener { // Служит �
                     Main.HumanXCheckpoint=((TileObject) object.getUserData()).getX();
                     Main.HumanYCheckpoint=((TileObject) object.getUserData()).getY();
                 }
-                screen.human.isDead(object.getUserData() != null && TileObject.class.isAssignableFrom(object.getUserData().getClass())); // передаем значение то что игрок в контакте
+                screen.human.isDead(object.getUserData() != null && TileObject.class.isAssignableFrom(object.getUserData().getClass())); // pass the value that the player is in contact
             }
         }
-        if(fixA.getUserData()=="HumanHead" || fixB.getUserData()=="HumanHead"){ // проверка столкновения одного объекта с головой игрока
+        if(fixA.getUserData()=="HumanHead" || fixB.getUserData()=="HumanHead"){ // check for collision of one object with the player's head
             Fixture Human=fixA.getUserData()=="HumanHead"? fixA:fixB;
             Fixture object= Human==fixA? fixB:fixA;
             if(object.getUserData()!=null && TileObject.class.isAssignableFrom(object.getUserData().getClass())) {
@@ -48,14 +48,14 @@ public class WorldContactListener implements ContactListener { // Служит �
         }
     }
     @Override
-    public void endContact(Contact contact) { // конец столкновения
+    public void endContact(Contact contact) { // end of collision
         Fixture fixA=contact.getFixtureA();
         Fixture fixB=contact.getFixtureB();
         if(fixA.getUserData()=="Human" || fixB.getUserData()=="Human"){
             Fixture Human=fixA.getUserData()=="Human"? fixA:fixB;
             Fixture object= Human==fixA? fixB:fixA;
             if(object.getUserData()!=null && TileObject.class.isAssignableFrom(object.getUserData().getClass())) {
-                if(Main.PreviousBouncers){ // если игрок был в контакте с батутом то сейчас уже нет
+                if(Main.PreviousBouncers){ // if the player was in contact with the trampoline, now he is no longer
                     Main.PreviousBouncers=false;
                 }
                 screen.human.isDead(object.getUserData() != null && TileObject.class.isAssignableFrom(object.getUserData().getClass()));
@@ -65,7 +65,7 @@ public class WorldContactListener implements ContactListener { // Служит �
             Fixture Human=fixA.getUserData()=="HumanHead"? fixA:fixB;
             Fixture object= Human==fixA? fixB:fixA;
             if(object.getUserData()!=null && TileObject.class.isAssignableFrom(object.getUserData().getClass())) {
-                if(screen.human.Head()){ // если голова игрока была в контакте то сейчас нет
+                if(screen.human.Head()){ // if the player's head was in contact then now it's not
                     screen.human.isHead(false);
                 }
             }
