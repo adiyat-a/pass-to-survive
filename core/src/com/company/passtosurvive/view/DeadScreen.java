@@ -17,7 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.company.passtosurvive.tools.MusicalAtmosphere;
 
-public class DeadScreen implements Screen { // GameOver экран запускается когда игрок падает в лаву или умирает от шипов
+public class DeadScreen implements Screen { // GameOver screen starts when the player falls into lava or dies from spikes
     final Main game;
     private MusicalAtmosphere music;
     private Texture gameOver, label;
@@ -26,8 +26,8 @@ public class DeadScreen implements Screen { // GameOver экран запуск�
     private Stage stage;
     private Skin skin;
     private ImageButton Yes, No;
-    private float stateTime, stateTimer; // stateTimer нужен для подсчета времени
-    private boolean played; // нужно для запуска звука в определенный момент
+    private float stateTime, stateTimer; // stateTimer is needed to count time
+    private boolean played; // needed to start sound at a certain moment
     public DeadScreen(final Main game) {
         this.game = game;
         Main.HumanX=0;
@@ -42,14 +42,14 @@ public class DeadScreen implements Screen { // GameOver экран запуск�
             Main.animation = new Animation(0.08f, Frames);
             Frames.clear();
         }
-        else if(Main.hit==1 && Main.deaths!=20 || Main.hit==2 && Main.deaths!=20) {
+        else if(Main.hit==1 && Main.deaths!=20 || Main.hit==2 && Main.deaths!=20) { // if player dies from lava and other hazards
             if(Main.hit==1) {
                 atlas = new TextureAtlas("Dead.pack");
                 for (int i = 1; i <= 6; i++) Frames.add(atlas.findRegion("fire" + i));
                 Main.animation = new Animation(0.15f, Frames);
                 Frames.clear();
             }
-            else if(Main.hit==2) {
+            else if(Main.hit==2) { // if player dies from spikes
                 gameOver=new Texture("gameOver.png");
                 atlas = new TextureAtlas("DeadSpikes.pack");
                 for (int i = 1; i <= 37; i += 2)
@@ -94,16 +94,16 @@ public class DeadScreen implements Screen { // GameOver экран запуск�
             music.GameOverSoundPLay();
         }
     }
-    public void deadRender(){ // объяснил в презентации, почему я так сделал
+    public void deadRender(){ // I explained this in slides (.pptx file)
         stateTime+=Gdx.graphics.getDeltaTime();
         batch.draw( (TextureRegion) Main.animation.getKeyFrame(stateTime, true), 0, Main.height/2, Main.width, Main.height/3f);
     }
-    public void deadSpikesRender(){ // объяснил в презентации, почему я так сделал
+    public void deadSpikesRender(){ // I explained this in slides (.pptx file)
         stateTime += Gdx.graphics.getDeltaTime();
         batch.draw((TextureRegion) Main.animation.getKeyFrame(stateTime, false), Main.width / 2-(168/(1794/Main.width)),
                 Main.height/2-80/(1080/Main.height)+Main.height/5.1f, 336/(1794/Main.width), 336/(1794/Main.width));
     }
-    public void ghoulRender(){ // объяснил в презентации, почему я так сделал
+    public void ghoulRender(){ // I explained this in slides (.pptx file)
         stateTime += Gdx.graphics.getDeltaTime();
         batch.draw((TextureRegion) Main.animation.getKeyFrame(stateTime, false), -640/(720/Main.height)+(Main.width/2), 0,
                 1280/(720/Main.height),
@@ -114,8 +114,8 @@ public class DeadScreen implements Screen { // GameOver экран запуск�
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1); // отчистка
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // отчистка
+        Gdx.gl.glClearColor(0, 0, 0, 1); // cleanup
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // cleanup
         batch.begin();
         stateTimer+=delta;
         if(Main.hit==1 && Main.deaths!=20 || Main.hit==2 && Main.deaths!=20) {
@@ -183,7 +183,7 @@ public class DeadScreen implements Screen { // GameOver экран запуск�
     }
 
     @Override
-    public void resize(int width, int height) { // объяснил в презентации, почему я так сделал
+    public void resize(int width, int height) { // I explained this in slides (.pptx file)
         if(Main.hit==1 && Main.deaths!=20 || Main.hit==2 && Main.deaths!=20) {
             Yes.setSize(141.5f / (1794 / Main.width), 50 / (1794 / Main.width));
             No.setSize(141.5f / (1794 / Main.width), 50 / (1794 / Main.width));

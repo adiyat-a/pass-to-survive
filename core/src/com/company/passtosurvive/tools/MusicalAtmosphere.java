@@ -5,13 +5,13 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.utils.Disposable;
 
-public class MusicalAtmosphere extends AssetManager { // отвечает за музыку и звуки
+public class MusicalAtmosphere extends AssetManager { // used for music and sounds
 
-    public MusicalAtmosphere() { // загрузка всего
-        load("18 - Dr. Wily's Castle.ogg", Music.class);
-        load("18 - Dr. Wily's Castle (1).ogg", Music.class);
-        load("10 - Magnet Man.ogg", Music.class);
-        load("30 - Game Over.wav", Sound.class);
+    public MusicalAtmosphere() { // loading everything
+        load("Level1Sound.ogg", Music.class);
+        load("Level2Sound.ogg", Music.class);
+        load("MainMenuSound.ogg", Music.class);
+        load("GameOverSound.wav", Sound.class);
         load("HumanJump.wav", Sound.class);
         load("WinSound.wav", Sound.class);
         load("ghoulSound.wav", Sound.class);
@@ -19,41 +19,41 @@ public class MusicalAtmosphere extends AssetManager { // отвечает за �
         finishLoading();
     }
     public void MainMenuSoundPLay(){
-        get("10 - Magnet Man.ogg", Music.class).setVolume(0.4f);
-        get("10 - Magnet Man.ogg", Music.class).setLooping(true);
-        get("10 - Magnet Man.ogg", Music.class).play();
+        get("MainMenuSound.ogg", Music.class).setVolume(0.4f);
+        get("MainMenuSound.ogg", Music.class).setLooping(true);
+        get("MainMenuSound.ogg", Music.class).play();
     }
     public boolean MainMenuSoundIsPlaying(){
-        return get("10 - Magnet Man.ogg", Music.class).isPlaying();
+        return get("MainMenuSound.ogg", Music.class).isPlaying();
     }
     public void Level1SoundPLay(){
-        get("18 - Dr. Wily's Castle.ogg", Music.class).setVolume(0.4f);
-        get("18 - Dr. Wily's Castle.ogg", Music.class).setLooping(true);
-        get("18 - Dr. Wily's Castle.ogg", Music.class).play();
+        get("Level1Sound.ogg", Music.class).setVolume(0.4f);
+        get("Level1Sound.ogg", Music.class).setLooping(true);
+        get("Level1Sound.ogg", Music.class).play();
     }
     public void Level2SoundPlay(){
-        get("18 - Dr. Wily's Castle (1).ogg", Music.class).setVolume(0.4f);
-        get("18 - Dr. Wily's Castle (1).ogg", Music.class).setLooping(true);
-        get("18 - Dr. Wily's Castle (1).ogg", Music.class).play();
+        get("Level2Sound.ogg", Music.class).setVolume(0.4f);
+        get("Level2Sound.ogg", Music.class).setLooping(true);
+        get("Level2Sound.ogg", Music.class).play();
     }
     public void JumpSoundPLay(){
         get("HumanJump.wav", Sound.class).play();
     }
     public void GameOverSoundPLay(){
-        get("30 - Game Over.wav", Sound.class).play();
+        get("GameOverSound.wav", Sound.class).play();
     }
     public void WinSoundPlay(){
         get("WinSound.wav", Sound.class).play();
     }
     public void GhoulSoundPlay(){get("ghoulSound.wav", Sound.class).play();}
     public void MainMenuSoundStop(){
-        get("10 - Magnet Man.ogg", Music.class).stop();
+        get("MainMenuSound.ogg", Music.class).stop();
     }
     public void Level1SoundStop(){
-        get("18 - Dr. Wily's Castle.ogg", Music.class).stop();
+        get("Level1Sound.ogg", Music.class).stop();
     }
     public void Level2SoundStop(){
-        get("18 - Dr. Wily's Castle (1).ogg", Music.class).stop();
+        get("Level2Sound.ogg", Music.class).stop();
     }
     public void EndSoundPlay(){get("End.wav", Sound.class).play();}
 }

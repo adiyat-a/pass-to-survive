@@ -22,35 +22,35 @@ import com.company.passtosurvive.view.Level1ScreenPart2;
 import com.company.passtosurvive.view.Level2ScreenFloor1;
 import com.company.passtosurvive.view.Level2ScreenFloor2;
 
-public class b2WorldCreator { // создает объекты из карт для world и его листенера, в левел экранах есть Box2DDebugRenderer он отрисовывает эти объекты
+public class b2WorldCreator { // creates objects from maps for the world and its listener, in the level screens there is a Box2DDebugRenderer it draws these objects
     public b2WorldCreator(World world, TiledMap map, Level1ScreenPart1 screen){
         Body body;
-        // создаем землю
+        // creating grass
         for(MapObject object: map.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Ground(world, map, rect);
         }
-        // создаем лаву
+        // creating lava
         for(MapObject object: map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Lava(world, map, rect);
         }
-        // создаем шипы
+        // creating spikes
         for(MapObject object: map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Spikes(world, map, rect);
         }
-        // создаем шипы
+        // creating the other spikes
         for(MapObject object: map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Spikes(world, map, rect);
         }
-        // создаем объект служащий триггером для перехода на след. часть уровня
+        // We create an object that serves as a trigger for going to the trail. part of the level
         for(MapObject object: map.getLayers().get(7).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new NextPart(world, map, rect);
         }
-        // создаем чекпоинты
+        // creating checkpoints
         for(MapObject object: map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new CheckPoint(world, map, rect);
@@ -58,27 +58,27 @@ public class b2WorldCreator { // создает объекты из карт д�
     }
     public b2WorldCreator(World world, TiledMap map, Level1ScreenPart2 screen){
         Body body;
-        // создаем землю
+        // creating grass
         for(MapObject object: map.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Ground(world, map, rect);
         }
-        // создаем шипы
+        // creating spikes
         for(MapObject object: map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Spikes(world, map, rect);
         }
-        // создаем сундук
+        // creating chest
         for(MapObject object: map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Finish(world, map, rect);
         }
-        // создаем чекпоинты
+        // creating checkpoints
         for(MapObject object: map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new CheckPoint(world, map, rect);
         }
-        // создаем лаву
+        // creating lava
         for(MapObject object: map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Lava(world, map, rect);
@@ -89,32 +89,32 @@ public class b2WorldCreator { // создает объекты из карт д�
         PolygonShape shape=new PolygonShape();
         FixtureDef fDef=new FixtureDef();
         Body body;
-        // создаем батуты
+        // creating bouncers
         for(MapObject object: map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Bouncers(world, map, rect);
         }
-        // создаем землю
+        // creating grass
         for(MapObject object: map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Ground(world, map, rect);
         }
-        // создаем лаву
+        // creating lava
         for(MapObject object: map.getLayers().get(7).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Lava(world, map, rect);
         }
-        // создаем объект служащий для запуска скрипта (в Level2ScreenFloor1)
+        // create an object that serves to run the script (in Level2ScreenFloor1)
         for(MapObject object: map.getLayers().get(8).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new NextFloor(world, map, rect);
         }
-        // создаем чекпоинты
+        // creating checkpoints
         for(MapObject object: map.getLayers().get(9).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new CheckPoint(world, map, rect);
         }
-        // создаем объект служащий триггером для перехода на след. часть уровня
+        // We create an object that serves as a trigger for going to the next part of the level
         for(MapObject object: map.getLayers().get(10).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new NextPart(world, map, rect);
@@ -125,27 +125,27 @@ public class b2WorldCreator { // создает объекты из карт д�
         PolygonShape shape=new PolygonShape();
         FixtureDef fDef=new FixtureDef();
         Body body;
-        // создаем батуты
+        // creating bouncers
         for(MapObject object: map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Bouncers(world, map, rect);
         }
-        // создаем землю
+        // creating grass
         for(MapObject object: map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Ground(world, map, rect);
         }
-        // создаем лаву
+        // creating lava
         for(MapObject object: map.getLayers().get(7).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Lava(world, map, rect);
         }
-        // создаем финиш
+        // creating finish финиш
         for(MapObject object: map.getLayers().get(8).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new Finish(world, map, rect);
         }
-        // создаем чекпоинты
+        // creating checkpoints
         for(MapObject object: map.getLayers().get(9).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect=((RectangleMapObject) object).getRectangle();
             new CheckPoint(world, map, rect);

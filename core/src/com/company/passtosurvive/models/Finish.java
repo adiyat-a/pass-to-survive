@@ -9,11 +9,11 @@ import com.company.passtosurvive.view.Main;
 public class Finish extends TileObject{
     public Finish(World world, TiledMap map, Rectangle bounds) {
         super(world, map, bounds);
-        fixture.setUserData(this); // добавляем чтобы WorldContactListener смог распознать
+        fixture.setUserData(this); // add so that WorldContactListener can recognize
     }
 
     @Override
     public void hit() {
         Main.hit=3;
-    } // каждый наследник ставит разное число
+    } // each heir puts a different number
 }

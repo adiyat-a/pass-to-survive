@@ -16,7 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.company.passtosurvive.tools.MusicalAtmosphere;
 
-public class WinScreen implements Screen { // победный экран запускается после полного прохождения уровня
+public class WinScreen implements Screen { // the victory screen is launched after completing the level completely
     final Main game;
     private MusicalAtmosphere music;
     private Texture label, Thanks;
@@ -25,17 +25,17 @@ public class WinScreen implements Screen { // победный экран зап
     private Stage stage;
     private Skin skin;
     private ImageButton Yes, No;
-    private float stateTime, stateTimer; // stateTimer нужен для подсчета времени
-    private boolean played; // нужно для запуска звука в определенный момент
+    private float stateTime, stateTimer; // stateTimer is needed to count time
+    private boolean played; // needed to start sound at a certain moment
     public WinScreen(final Main game) {
         this.game = game;
         music=new MusicalAtmosphere();
         batch=new SpriteBatch();
-        if(Main.level1IsFinished && Main.level2IsFinished) { // когда полностью прошел игру
+        if(Main.level1IsFinished && Main.level2IsFinished) { // when player have completely completed the game
             label = new Texture("GameOverThanks.png");
             Thanks = new Texture("thforpl.png");
         }
-        else if(Main.level1IsFinished && !Main.level2IsFinished || Main.level2IsFinished && !Main.level1IsFinished) { // когда один из уровней прошел
+        else if(Main.level1IsFinished && !Main.level2IsFinished || Main.level2IsFinished && !Main.level1IsFinished) { // when one of the levels has passed
             stage = new Stage();
             label = new Texture("continueWhite.png");
             atlas = new TextureAtlas("AllComponents.pack");
@@ -71,7 +71,7 @@ public class WinScreen implements Screen { // победный экран зап
             });
             stage.addActor(Yes);
             stage.addActor(No);
-            Gdx.input.setInputProcessor(stage); // чтобы нажатия обрабатывал токо stage
+            Gdx.input.setInputProcessor(stage); // so that clicks are processed only by stage
         }
         if(Main.level1IsFinished && !Main.level2IsFinished || Main.level2IsFinished && !Main.level1IsFinished) {
             music.WinSoundPlay();
@@ -85,8 +85,8 @@ public class WinScreen implements Screen { // победный экран зап
     public void show() { }
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1); // отчистка
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // отчистка
+        Gdx.gl.glClearColor(0, 0, 0, 1); // cleanup
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // cleanup
         batch.begin();
         stateTimer+=delta;
         if(Main.level1IsFinished && !Main.level2IsFinished || Main.level2IsFinished && !Main.level1IsFinished){
@@ -124,7 +124,7 @@ public class WinScreen implements Screen { // победный экран зап
         }
     }
     @Override
-    public void resize(int width, int height) { // объяснил в презентации, почему я так сделал
+    public void resize(int width, int height) { // I explained this in slides (.pptx file)
         if (Main.level1IsFinished && !Main.level2IsFinished || Main.level2IsFinished && !Main.level1IsFinished) {
             Yes.setSize(141.5f / (1794 / Main.width), 50 / (1794 / Main.width));
             No.setSize(141.5f / (1794 / Main.width), 50 / (1794 / Main.width));

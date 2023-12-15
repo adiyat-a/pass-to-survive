@@ -18,6 +18,7 @@ android {
     }
     defaultConfig {
         applicationId "com.company.passtosurvive"
+        namespace "com.company.passtosurvive"
         minSdkVersion 14
         targetSdkVersion 32
         versionCode 1
@@ -25,7 +26,6 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
