@@ -12,21 +12,21 @@ public class JoyStickInputListener extends InputListener {
     }
 
     @Override
-    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) { // запускается когда на джойстик нажали
+    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) { // runs when the joystick is pressed
         joyStick.setTouched();
         joyStick.changeCursor(x, y);
         return true;
     }
 
     @Override
-    public void touchUp(InputEvent event, float x, float y, int pointer, int button) { // запускается когда джойстик отпустили
+    public void touchUp(InputEvent event, float x, float y, int pointer, int button) { // runs when the joystick is released
         joyStick.setUnTouched();
     }
 
     @Override
-    public void touchDragged(InputEvent event, float x, float y, int pointer) { // запускается когда джойстик зажали и перетягивают его курсор
+    public void touchDragged(InputEvent event, float x, float y, int pointer) { // runs when the joystick is held down and its cursor is dragged
         joyStick.changeCursor(x, y);
-        if(joyStick.isJoyStickDown()){ // проверка нажатия
+        if(joyStick.isJoyStickDown()){ // check pressing
             joyStick.handleChangeListener();
         }
     }

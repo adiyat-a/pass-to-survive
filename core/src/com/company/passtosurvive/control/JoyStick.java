@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JoyStick extends Actor {
-    private Texture JoyStick; // джойстик
-    private Texture curJoyStick; // курсор джойстика
-    private boolean isJoyStickDown; // проверяет нажат ли джойстик
+    private Texture JoyStick;
+    private Texture curJoyStick;
+    private boolean isJoyStickDown;
     private float radius;
     private float CUR_RADIUS;
     private float CurJoyStickX;
@@ -22,11 +22,11 @@ public class JoyStick extends Actor {
     private List<JoyStickChangedListener> listeners=new ArrayList<JoyStickChangedListener>();
     public float getValueX() {
         return valueX;
-    } // valueX нам понадобится чтобы сделать с помощью джойстика управление человека
+    } // valueX we need to do using the human control joystick
     public boolean isJoyStickDown(){
         return isJoyStickDown;
     }
-    public void handleChangeListener(){ // нужен во время того как игрок перетягивает курсор
+    public void handleChangeListener(){ // needed when the player drags the cursor
         for(JoyStickChangedListener listener: listeners){
             listener.changed(valueX, valueY);
         }
@@ -49,32 +49,32 @@ public class JoyStick extends Actor {
         isJoyStickDown=false;
     }
     @Override
-    public Actor hit(float x, float y, boolean touchable){ // здесь мы проверяем попадает ли наш палец в поле джойстика
+    public Actor hit(float x, float y, boolean touchable){ // here we check whether our finger is in the joystick field
         Actor actor=super.hit(x, y, touchable);
         if(actor==null) return null;
         else{
             float dx=x-radius;
             float dy=y-radius;
-            return (dx*dx+dy*dy<=radius*radius)? this: null; // если да то возвращаем actor если нет то ничего
+            return (dx*dx+dy*dy<=radius*radius)? this: null; // if yes then return actor if not then nothing
         }
     }
-    public void changeCursor(float x, float y){ // x y мы получаем от листенера, это координаты где был нажат джойстик
-        float changeX=x-radius; // насколько координаты джойстика были изменены
+    public void changeCursor(float x, float y){ // x y we get from the listener, these are the coordinates where the joystick was pressed
+        float changeX=x-radius; // how much the joystick coordinates have been changed
         float changeY=y-radius;
-        float length=(float) Math.sqrt(changeX*changeX+changeY*changeY); // вычисляем длину от центра джойстика до точки куда нажал игрок
-        if(length<radius){ // запустится если длина от центра до точки куда нажал игрок меньше радиуса
+        float length=(float) Math.sqrt(changeX*changeX+changeY*changeY); // calculate the length from the center of the joystick to the point where the player pressed
+        if(length<radius){ // will run if the length from the center to the point where the player pressed is less than the radius
             this.CurJoyStickX=changeX;
             this.CurJoyStickY=changeY;
         }
-        else{ // благодаря этому крусор не выйдет из поля джойстика
+        else{ // thanks to this, the cursor will not leave the joystick field
             float k=radius/length;
             this.CurJoyStickX=changeX*k;
             this.CurJoyStickY=changeY*k;
         }
-        valueX=CurJoyStickX*inverseRadius; // если игрок потянул курсор в право то valueX больше 0 если в лево то наоборот
+        valueX=CurJoyStickX*inverseRadius; // if the player pulled the cursor to the right then valueX is greater than 0, if to the left then vice versa
         valueY=CurJoyStickY*inverseRadius;
     }
-    public void setSP(){ // ставим размеры
+    public void setSP(){ // set size
         setX(140);
         setY(40);
         setWidth(400);
@@ -82,22 +82,22 @@ public class JoyStick extends Actor {
         radius=200;
         CUR_RADIUS=90;
     }
-    public void setWidth(float width){ // ставим так чтобы джойстик был круглым
+    public void setWidth(float width){ // set it so that the joystick is round
         super.setWidth(width);
         super.setHeight(width);
         radius=width/2;
-        inverseRadius=1/radius; // инверс радиус нам понадобится чтобы потом вычислить ValueX и Y
+        inverseRadius=1/radius; // we will need the inverse radius to later calculate ValueX and Y
     }
-    public void setHeight(float height){ // ставим так чтобы джойстик был круглым
+    public void setHeight(float height){ // set it so that the joystick is round
         super.setWidth(height);
         super.setHeight(height);
         radius=height/2;
         inverseRadius=1/radius;
     }
     @Override
-    public void draw(Batch batch, float parentAlpha) { // stage будет запускать этот метод с помощью своего метода draw
-        batch.draw(JoyStick, this.getX(), this.getY(), this.getWidth(), this.getHeight()); // джойстик статичен
-        if(isJoyStickDown){ // нужен для отрисовки курсора в том месте где нажали на джойстик
+    public void draw(Batch batch, float parentAlpha) { // stage will run this method using its draw method
+        batch.draw(JoyStick, this.getX(), this.getY(), this.getWidth(), this.getHeight()); // joystick is static
+        if(isJoyStickDown){ // needed to draw the cursor in the place where the joystick was pressed
             batch.draw(curJoyStick, this.getX()+radius-CUR_RADIUS+CurJoyStickX, this.getY()+radius-CUR_RADIUS+CurJoyStickY, 2*CUR_RADIUS, 2*CUR_RADIUS);
         }
         else{

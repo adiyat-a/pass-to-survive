@@ -42,14 +42,14 @@ public class DeadScreen implements Screen { // GameOver screen starts when the p
             Main.animation = new Animation(0.08f, Frames);
             Frames.clear();
         }
-        else if(Main.hit==1 && Main.deaths!=20 || Main.hit==2 && Main.deaths!=20) {
+        else if(Main.hit==1 && Main.deaths!=20 || Main.hit==2 && Main.deaths!=20) { // if player dies from lava and other hazards
             if(Main.hit==1) {
                 atlas = new TextureAtlas("Dead.pack");
                 for (int i = 1; i <= 6; i++) Frames.add(atlas.findRegion("fire" + i));
                 Main.animation = new Animation(0.15f, Frames);
                 Frames.clear();
             }
-            else if(Main.hit==2) {
+            else if(Main.hit==2) { // if player dies from spikes
                 gameOver=new Texture("gameOver.png");
                 atlas = new TextureAtlas("DeadSpikes.pack");
                 for (int i = 1; i <= 37; i += 2)

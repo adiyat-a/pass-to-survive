@@ -88,7 +88,7 @@ public class Level2ScreenFloor1 extends PlayGameScreen{ // level 2 part 1 starts
     public void show() { }
     @Override
     public void handle() {
-        if (buttons.jump.isPressed() && Main.hit!=6 && !Main.PreviousBouncers && human.HumanBody.getLinearVelocity().y == 0 && !human.Head()) { // 6 means trampoline
+        if (buttons.jump.isPressed() && Main.hit!=6 && !Main.PreviousBouncers && human.HumanBody.getLinearVelocity().y == 0 && !human.Head()) { // 6 means bouncer
             Main.v.set(0, 8f);
             human.HumanBody.applyLinearImpulse(Main.v, human.HumanBody.getWorldCenter(), true);
             music.JumpSoundPLay();
@@ -125,7 +125,7 @@ public class Level2ScreenFloor1 extends PlayGameScreen{ // level 2 part 1 starts
                 cam.position.y=mapPort.getWorldHeight()/2; // camera returns to original position Y
                 cam.position.x = human.HumanBody.getPosition().x; // camera moves behind the player
         }
-        human.update(dt); // обновляем спрайт
+        human.update(dt); // updates sprite
         cam.update();
         renderer.setView(cam);
     }
@@ -136,7 +136,7 @@ public class Level2ScreenFloor1 extends PlayGameScreen{ // level 2 part 1 starts
         Gdx.gl.glClearColor(0, 0, 0, 1); // cleanup
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // cleanup
         renderer.render();
-        b2dr.render(world, cam.combined);  // вот это можете отключить если не хотите видеть зеленую обводку вокруг объектов world
+        b2dr.render(world, cam.combined);  // you can turn this off if you don’t want to see a green outline around world objects
         batch.setProjectionMatrix(cam.combined);
         collision();
         batch.begin();
@@ -148,13 +148,13 @@ public class Level2ScreenFloor1 extends PlayGameScreen{ // level 2 part 1 starts
 
     @Override
     public void collision() {
-        if(human.Dead() && Main.hit==1){ // 1 означает лаву
+        if(human.Dead() && Main.hit==1){ // 1 means lava
             Main.deaths++;
             music.Level2SoundStop();
             dispose();
             game.setScreen(new DeadScreen(game));
         }
-        if(Main.hit==7){ // 7 означает объект служащий триггером для перехода на след. часть
+        if(Main.hit==7){ // 7 means an object that serves as a trigger for moving to the next part
             Main.HumanX=0;
             Main.HumanY=0;
             Main.HumanXCheckpoint=0;
@@ -163,7 +163,7 @@ public class Level2ScreenFloor1 extends PlayGameScreen{ // level 2 part 1 starts
             dispose();
             game.setScreen(new Level2ScreenFloor2(game));
         }
-        if (Main.hit == 6 && Main.PreviousBouncers && human.HumanBody.getLinearVelocity().y == 0 && !human.Head()) { // 6 означает батуты, previousBouncers нам нужен чтобы не было проблем с батутами
+        if (Main.hit == 6 && Main.PreviousBouncers && human.HumanBody.getLinearVelocity().y == 0 && !human.Head()) { // 6 means trampolines, we need previousBouncers so that there are no problems with trampolines
             Main.v.set(0, 10f);
             human.HumanBody.applyLinearImpulse(Main.v, human.HumanBody.getWorldCenter(), true);
             music.JumpSoundPLay();

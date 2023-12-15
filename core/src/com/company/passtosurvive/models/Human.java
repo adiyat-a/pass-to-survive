@@ -14,10 +14,10 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.company.passtosurvive.view.Main;
 
-public class Human extends Sprite { // моедлька игрока есть в каждом левел скрине
-    public enum State { JUMPING, RUNNING, STANDING}; // статусы нужны для смены текстуры человека
+public class Human extends Sprite { // the player model is in every level screen
+    public enum State { JUMPING, RUNNING, STANDING}; // statuses are needed to change the texture of a person
     private BodyDef bDef;
-    public State currentState; // нужны два статуса чтобы не было проблем с анимацией и чтобы определять статус в разных ситуациях
+    public State currentState; // two statuses are needed to avoid problems with animation and to determine the status in different situations
     public State previousState;
     public World world;
     public Body HumanBody;
@@ -33,7 +33,7 @@ public class Human extends Sprite { // моедлька игрока есть в
         previousState=State.STANDING;
         stateTime=0;
         Dead=false;
-        runningRight=true; // всегда по умолчанию моделька игрока будет в правую сторону смотреть
+        runningRight=true; // by default the player model will always look to the right
         Array<TextureRegion> frames=new Array<TextureRegion>();
         if(Main.deaths<20) {
             frames.add(atlas.findRegion("humanrun1"));
@@ -45,7 +45,7 @@ public class Human extends Sprite { // моедлька игрока есть в
             frames.add(atlas.findRegion("humanstay2"));
             humanStand = new Animation(0.25f, frames);
             frames.clear();
-            humanJump = new TextureRegion(atlas.findRegion("humanfall"), 0, 0, 78, 93); // для прыжка и падения у меня один кадр поэтому это не анимация
+            humanJump = new TextureRegion(atlas.findRegion("humanfall"), 0, 0, 78, 93); // for jumping and falling I have one frame so this is not animation
         }
         else{
             frames.add(atlas.findRegion("deadrun1"));
@@ -71,12 +71,12 @@ public class Human extends Sprite { // моедлька игрока есть в
     public boolean Dead(){
         return Dead;
     }
-    public void update(float dt){ // нужен для того чтобы спрайт двигался за телом самого человека в world чтобы был притянут к нему
+    public void update(float dt){ // needed for the sprite to move behind the body of the person in the world so that it is attracted to him
         setPosition(HumanBody.getPosition().x-getWidth()/2, HumanBody.getPosition().y-getHeight()/2.3f);
-        setRegion(getFrame(dt)); // обновление текстуры
+        setRegion(getFrame(dt)); // texture update
     }
     public TextureRegion getFrame(float dt){
-        currentState=getState(); // получаем статус чтобы потом от него отталкиватся
+        currentState=getState(); // get the status so that we can build on it later
         TextureRegion region;
         switch (currentState){
             case JUMPING:
@@ -90,7 +90,7 @@ public class Human extends Sprite { // моедлька игрока есть в
                 region=(TextureRegion) humanStand.getKeyFrame(stateTime, true);
                 break;
         }
-        // эти условия нужны для того чтобы спрайт отзеркаливался
+        // these conditions are needed for the sprite to be mirrored
         if((HumanBody.getLinearVelocity().x<0 || !runningRight) && !region.isFlipX()){
             region.flip(true, false);
             runningRight=false;
@@ -99,7 +99,7 @@ public class Human extends Sprite { // моедлька игрока есть в
             region.flip(true, false);
             runningRight=true;
         }
-        stateTime =currentState==previousState ? stateTime +dt : 0; // нужно чтобы не было проблем с анимацией
+        stateTime =currentState==previousState ? stateTime +dt : 0; // we need to avoid problems with animation
         previousState=currentState;
         return region;
     }
@@ -111,28 +111,28 @@ public class Human extends Sprite { // моедлька игрока есть в
     }
     public void defineHuman(){
         bDef=new BodyDef();
-        bDef.position.set(getX(), getY()); // ставим позицию
-        bDef.type=BodyDef.BodyType.DynamicBody; // ставим тип
-        HumanBody=world.createBody(bDef); // добавляем
+        bDef.position.set(getX(), getY());
+        bDef.type=BodyDef.BodyType.DynamicBody;
+        HumanBody=world.createBody(bDef);
         FixtureDef fDef=new FixtureDef();
         PolygonShape shape=new PolygonShape();
-        shape.setAsBox((23/2)/Main.PPM, (43/2)/Main.PPM); // ставим размеры
+        shape.setAsBox((23/2)/Main.PPM, (43/2)/Main.PPM);
         fDef.shape=shape;
-        HumanBody.createFixture(fDef); // добавляем
-        EdgeShape Human=new EdgeShape(); // edgeshape нам нужен чтобы сделать типо как стенки вокруг тела HumanBody
-        Human.set(new Vector2(-12f/Main.PPM, -22/Main.PPM), new Vector2(12f/Main.PPM, -22/Main.PPM)); // нижняя стенка
+        HumanBody.createFixture(fDef);
+        EdgeShape Human=new EdgeShape(); // we need edgeshape to make it look like walls around the HumanBody
+        Human.set(new Vector2(-12f/Main.PPM, -22/Main.PPM), new Vector2(12f/Main.PPM, -22/Main.PPM)); // bottom side
         fDef.shape=Human;
         fDef.isSensor=true;
         HumanBody.createFixture(fDef).setUserData("Human");
-        Human.set(new Vector2(12f/Main.PPM, -22/Main.PPM), new Vector2(12f/Main.PPM, 22/Main.PPM)); // боковая стенка
+        Human.set(new Vector2(12f/Main.PPM, -22/Main.PPM), new Vector2(12f/Main.PPM, 22/Main.PPM)); // side wall
         fDef.shape=Human;
         fDef.isSensor=true;
         HumanBody.createFixture(fDef).setUserData("Human");
-        Human.set(new Vector2(-12f/Main.PPM, -22/Main.PPM), new Vector2(-12f/Main.PPM, 22/Main.PPM)); // боковая стенка
+        Human.set(new Vector2(-12f/Main.PPM, -22/Main.PPM), new Vector2(-12f/Main.PPM, 22/Main.PPM)); // side wall
         fDef.shape=Human;
         fDef.isSensor=true;
         HumanBody.createFixture(fDef).setUserData("Human");
-        Human.set(new Vector2(-10.1f/Main.PPM, 23/Main.PPM), new Vector2(10.1f/Main.PPM, 23/Main.PPM)); // вверхняя стенка, она не будет служить триггером для GameOver
+        Human.set(new Vector2(-10.1f/Main.PPM, 23/Main.PPM), new Vector2(10.1f/Main.PPM, 23/Main.PPM)); // the top wall, it will not serve as a trigger for Game Over
         fDef.shape=Human;
         fDef.isSensor=true;
         HumanBody.createFixture(fDef).setUserData("HumanHead");

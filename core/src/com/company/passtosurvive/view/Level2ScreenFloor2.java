@@ -52,18 +52,18 @@ public class Level2ScreenFloor2 extends PlayGameScreen { // level 2 part 2 is tr
         mapPort = new FitViewport(Main.worldWidth / Main.PPM, Main.worldHeight / Main.PPM, cam);
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("map4.tmx");
-        renderer = new OrthogonalTiledMapRenderer(map, 1 / Main.PPM); // почти все величины связаные с картой я делю на PPM чтобы не было проблем с физикой
+        renderer = new OrthogonalTiledMapRenderer(map, 1 / Main.PPM); // I divide almost all values associated with the map by PPM so that there are no problems with physics
         cam.position.set(mapPort.getWorldWidth() / 2, mapPort.getWorldHeight() / 2, 0);
         Main.v.set(0, -21); // I didn't create new vector2 because This will result in unnecessary memory allocation
         world = new World(Main.v, true);
         if(Main.HumanX!=0 && Main.HumanY!=0){
-            human = new Human(world,Main.HumanX + 0.225f, Main.HumanY + 0.3f); // увеличиваю из-за того что игрок спавнится не ровно по центру
+            human = new Human(world,Main.HumanX + 0.225f, Main.HumanY + 0.3f); // increase due to the fact that the player does not spawn exactly in the center
         }
         else if (Main.HumanX == 0 && Main.HumanY == 0 && Main.HumanYCheckpoint == 0 && Main.HumanXCheckpoint == 0) {
             human = new Human(world, 14272/ Main.PPM, 704 / Main.PPM);
         }
         else if(Main.HumanX==0 && Main.HumanY==0){
-            human = new Human(world, Main.HumanXCheckpoint, Main.HumanYCheckpoint+0.3f); // увеличиваю Y на 0.3f чтобы игрок спавнился чуть выше чем сам чекпоинт
+            human = new Human(world, Main.HumanXCheckpoint, Main.HumanYCheckpoint+0.3f); // increase Y by 0.3f so that the player spawns slightly higher than the checkpoint itself
         }
         b2dr = new Box2DDebugRenderer();
         new b2WorldCreator(world, map, this);
@@ -90,13 +90,13 @@ public class Level2ScreenFloor2 extends PlayGameScreen { // level 2 part 2 is tr
 
     @Override
     public void handle() {
-        if (buttons.jump.isPressed() && Main.hit!=6 && !Main.PreviousBouncers && human.HumanBody.getLinearVelocity().y == 0 && !human.Head()) { // 6 означает батут
+        if (buttons.jump.isPressed() && Main.hit!=6 && !Main.PreviousBouncers && human.HumanBody.getLinearVelocity().y == 0 && !human.Head()) { // 6 means bouncer
             Main.v.set(0, 7f);
             human.HumanBody.applyLinearImpulse(Main.v, human.HumanBody.getWorldCenter(), true);
             music.JumpSoundPLay();
         }
         if (buttons.joyStick.isJoyStickDown()) {
-            if (buttons.joyStick.getValueX() > 0 && human.HumanBody.getLinearVelocity().x <= 3f) { // 3f это макс. скорость 0.3f как разгон (ускорение)
+            if (buttons.joyStick.getValueX() > 0 && human.HumanBody.getLinearVelocity().x <= 3f) { // 3f is the max. speed 0.3f as acceleration
                 Main.v.set(0.3f, 0);
                 human.HumanBody.applyLinearImpulse(Main.v, human.HumanBody.getWorldCenter(), true);
             } else if (buttons.joyStick.getValueX() < 0 && human.HumanBody.getLinearVelocity().x >= -3f) {
@@ -104,7 +104,7 @@ public class Level2ScreenFloor2 extends PlayGameScreen { // level 2 part 2 is tr
                 human.HumanBody.applyLinearImpulse(Main.v, human.HumanBody.getWorldCenter(), true);
             }
         }
-        if(!buttons.joyStick.isJoyStickDown() && human.HumanBody.getLinearVelocity().x!=0){ // нужно чтобы игрок сразу остановился после отпускания джойстика
+        if(!buttons.joyStick.isJoyStickDown() && human.HumanBody.getLinearVelocity().x!=0){ // we need the player to stop immediately after releasing the joystick
             Main.v.set(-human.HumanBody.getLinearVelocity().x, 0);
             human.HumanBody.applyLinearImpulse(Main.v, human.HumanBody.getWorldCenter(), true);
         }
@@ -114,8 +114,8 @@ public class Level2ScreenFloor2 extends PlayGameScreen { // level 2 part 2 is tr
     public void update(float dt) {
         handle();
         world.step(1 / 60f, 6, 2);
-        cam.position.x = human.HumanBody.getPosition().x; // камера движется за игроком
-        human.update(dt); // обновляем спрайт
+        cam.position.x = human.HumanBody.getPosition().x; // camera moves behind the player
+        human.update(dt); // updates sprite
         cam.update();
         renderer.setView(cam);
     }
@@ -126,12 +126,12 @@ public class Level2ScreenFloor2 extends PlayGameScreen { // level 2 part 2 is tr
         Gdx.gl.glClearColor(0, 0, 0, 1); // cleanup
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // cleanup
         renderer.render();
-        b2dr.render(world, cam.combined); // вот это можете отключить если не хотите видеть зеленую обводку вокруг объектов world
+        b2dr.render(world, cam.combined); // you can turn this off if you don’t want to see a green outline around world objects
         batch.setProjectionMatrix(cam.combined);
         collision();
         batch.begin();
         human.draw(batch);
-        batch.draw(background, -127, -375); // это текстура находится около финиша
+        batch.draw(background, -127, -375); // this texture is near the finish
         batch.end();
         buttons.stage.act(delta);
         buttons.stage.draw();
@@ -139,19 +139,19 @@ public class Level2ScreenFloor2 extends PlayGameScreen { // level 2 part 2 is tr
 
     @Override
     public void collision() {
-        if (human.Dead() && Main.hit == 1) { // 1 означает лаву
+        if (human.Dead() && Main.hit == 1) { // 1 means lava
             Main.deaths++;
             music.Level2SoundStop();
             dispose();
             game.setScreen(new DeadScreen(game));
         }
-        if (human.Dead() && Main.hit == 3) { // 3 означает финиш
+        if (human.Dead() && Main.hit == 3) { // 3 means finish
             Main.level2IsFinished=true;
             music.Level2SoundStop();
             dispose();
             game.setScreen(new WinScreen(game));
         }
-        if (Main.hit == 6 && Main.PreviousBouncers && human.HumanBody.getLinearVelocity().y == 0 && !human.Head()) { // 6 означает батуты, previousBouncers нам нужен чтобы не было проблем с батутами
+        if (Main.hit == 6 && Main.PreviousBouncers && human.HumanBody.getLinearVelocity().y == 0 && !human.Head()) { // 6 means bouncers, we need previousBouncers so that there are no problems with bouncers
             Main.v.set(0, 8f);
             human.HumanBody.applyLinearImpulse(Main.v, human.HumanBody.getWorldCenter(), true);
             music.JumpSoundPLay();

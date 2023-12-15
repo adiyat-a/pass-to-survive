@@ -8,10 +8,10 @@ import com.company.passtosurvive.view.Main;
 public class CheckPoint extends TileObject{
         public CheckPoint(World world, TiledMap map, Rectangle bounds) {
             super(world, map, bounds);
-            fixture.setUserData(this); // добавляем чтобы WorldContactListener смог распознать
+            fixture.setUserData(this); // add so that WorldContactListener can recognize
         }
         @Override
         public void hit() {
             Main.hit=4;
-        } // каждый наследник ставит разное число
+        } // each heir puts a different number
 }
