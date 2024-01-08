@@ -6,11 +6,11 @@
  <tileset firstgid="703" name="chest" tilewidth="32" tileheight="32" tilecount="6">
   <image source="chest.png" width="96" height="64"/>
  </tileset>
- <tileset firstgid="709" name="Без имени-2" tilewidth="32" tileheight="32" tilecount="4">
+ <tileset firstgid="709" name="Blocks" tilewidth="32" tileheight="32" tilecount="4">
   <image source="Blocks.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="713" name="2dpalm" tilewidth="32" tileheight="32" tilecount="35">
-  <image source="2dpalm.png" width="160" height="224"/>
+ <tileset firstgid="713" name="2Dpalm" tilewidth="32" tileheight="32" tilecount="35">
+  <image source="2Dpalm.png" width="160" height="224"/>
  </tileset>
  <tileset firstgid="748" name="checkpoint" tilewidth="32" tileheight="32" tilecount="6">
   <image source="checkpoint.png" width="96" height="64"/>
