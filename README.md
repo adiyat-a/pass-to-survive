@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **This repository is currently under construction, but it will be done very soon. Please check later. Thank you very much!** 
+
 Project name: Pass To Survive
 
 First and last name of the author: Adiyat Abubakirov
