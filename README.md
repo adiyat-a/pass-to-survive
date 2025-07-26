@@ -30,7 +30,7 @@ This game is a demo of my skills, knowledge with Java & [libGDX](https://github.
     * `.pack` - texture packs, tell the game in which part of a png file, the specific image is located.
     * [`.json`](assets/Buttons.json) - needed for all buttons in the game to set them a texture (pressed & released) from the `AllComponents.pack` file.
     * `.tmx` - maps that contains position for all the graphics & physical bodies on maps, use `.png` files as source of graphics.
-* Doesn’t use Viewport to scale graphics, all graphics are optimized for different screens using just the coefficient of width & height to screen for which graphics was originally scaled. This **ensures original aspect of ratio for every graphics**. See [Example](.github/pictures/screens.png).
+* Doesn’t use Viewport to scale graphics, all graphics are optimized for different screens using just the coefficient of width & height to screen for which graphics was originally scaled. This **ensures original aspect of ratio for every graphics**. This technique is most often used in `resize()` methods. See [Example](.github/pictures/screens.png).
 
 ## Info
 
