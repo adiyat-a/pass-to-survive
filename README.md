@@ -12,7 +12,7 @@
 ## :page_facing_up: Description
 
 This game is a demo of my skills, knowledge with Java & [libGDX](https://github.com/libgdx/libgdx).
-##### Stack: Java 21, Gradle 8.11, [libGDX](https://github.com/libgdx/libgdx) 1.10, Lombok 1.18, Maven, Android Studio, Tiled (TMX Maps).
+#### Stack: Java 21, Gradle 8.11, [libGDX](https://github.com/libgdx/libgdx) 1.10, Lombok 1.18, Maven, Android Studio, Tiled (TMX Maps).
 > [!NOTE]
 > * For gameplay, see [gameplay.mp4](https://drive.google.com/file/d/1TkbdMnFe6whaoUqQKZORxapOZRVnNOiO/view?usp=sharing).
 > * [libGDX](https://github.com/libgdx/libgdx) is compatible with any platform, including IOS & PC.
@@ -40,7 +40,7 @@ This game is a demo of my skills, knowledge with Java & [libGDX](https://github.
 * The game works in native resolution and native refresh rate of the phone.
 
 ## Prerequisites
-* ##### Minimum Android Version: 4
+* #### Minimum Android Version: 4
 
 Special thanks to [Brent Aureli](https://www.youtube.com/@BrentAureliCodes) for libGDX tutorials.
 
