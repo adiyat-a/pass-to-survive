@@ -18,7 +18,7 @@ This game is a demo of my skills, knowledge with Java & [libGDX](https://github.
 >
 > - For gameplay, see [gameplay.mp4](https://drive.google.com/file/d/1TkbdMnFe6whaoUqQKZORxapOZRVnNOiO/view?usp=sharing).
 > - [libGDX](https://github.com/libgdx/libgdx) is compatible with any platform, including IOS & PC.
-> - For project structure of Java classes, see [classes.svg](.github/pictures/classes.png).
+> - For project structure of Java classes, see [classes.png](.github/pictures/classes.png).
 
 ## :rocket: Key Features
 
